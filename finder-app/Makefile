@@ -1,7 +1,7 @@
 # Native compiler for your host machine (x86_64)
-CC=gcc
+CC ?= gcc
 # Prefix for cross-compiler toolchain
-CROSS_COMPILE=aarch64-none-linux-gnu
+CROSS_COMPILE ?= aarch64-none-linux-gnu
 
 # Run with: make writer
 writer: writer.c
@@ -9,7 +9,7 @@ writer: writer.c
 
 # Run with: make writer-arm
 writer-arm: writer.c
-	$(CROSS_COMPILE)-$(CC) writer.c -o writer-arm
+	$(CROSS_COMPILE)-gcc writer.c -o writer-arm
 
 # Run with: make clean
 clean:
