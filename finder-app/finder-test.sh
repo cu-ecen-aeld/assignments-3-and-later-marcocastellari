@@ -39,7 +39,12 @@ rm -rf "${WRITEDIR}"
 
 # create $WRITEDIR if not assignment1
 # assignment=`cat ../conf/assignment.txt`
-assignment=`cat conf/assignment.txt`
+
+# previous assignment
+# assignment=`cat conf/assignment.txt`
+
+# assignment 4
+assignment=`cat ${CONFDIR}/assignment.txt`
 
 if [ $assignment != 'assignment1' ]
 then
@@ -68,6 +73,8 @@ do
 done
 
 # OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
+
+# assignment 4
 OUTPUTSTRING=$(finder.sh "$WRITEDIR" "$WRITESTR" | tee /tmp/assignment4-result.txt)
 
 # remove temporary directories
