@@ -1,16 +1,29 @@
-# Native compiler for your host machine (x86_64)
-CC ?= gcc
-# Prefix for cross-compiler toolchain
-CROSS_COMPILE ?= aarch64-none-linux-gnu
+# # Native compiler for your host machine (x86_64)
+# CC ?= gcc
+# # Prefix for cross-compiler toolchain
+# CROSS_COMPILE ?= aarch64-none-linux-gnu
+# 
+# # Run with: make writer
+# writer: writer.c
+# 	$(CC) writer.c -o writer
+# 
+# # Run with: make writer-arm
+# writer-arm: writer.c
+# 	$(CROSS_COMPILE)-gcc writer.c -o writer-arm
+# 
+# # Run with: make clean
+# clean:
+# 	rm -f writer writer-cc *.o *.elf *.map
 
-# Run with: make writer
+
+CC ?= gcc
+CFLAGS ?= -Wall -g
+
+# The default target
+all: writer
+
 writer: writer.c
 	$(CC) writer.c -o writer
 
-# Run with: make writer-arm
-writer-arm: writer.c
-	$(CROSS_COMPILE)-gcc writer.c -o writer-arm
-
-# Run with: make clean
 clean:
-	rm -f writer writer-cc *.o *.elf *.map
+	rm -f writer *.o
