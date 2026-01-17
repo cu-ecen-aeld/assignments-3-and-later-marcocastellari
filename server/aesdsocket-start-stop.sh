@@ -1,12 +1,11 @@
 #!/bin/sh
-
 DAEMON=/usr/bin/aesdsocket
 PIDFILE=/var/run/aesdsocket.pid
 NAME=aesdsocket
 
 start() {
     echo "Starting $NAME..."
-    start-stop-daemon -S -n $NAME -p $PIDFILE -m -b -x $DAEMON -- -d
+    start-stop-daemon -S -n $NAME -p $PIDFILE -m -b -x $DAEMON
 }
 
 stop() {
@@ -18,7 +17,7 @@ stop() {
 case "$1" in
     start) start ;;
     stop) stop ;;
-    restart) stop; start ;;
+    restart) stop; sleep 1; start ;;
     *) echo "Usage: $0 {start|stop|restart}"; exit 1 ;;
 esac
 
